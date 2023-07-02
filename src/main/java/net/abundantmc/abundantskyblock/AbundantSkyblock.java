@@ -8,6 +8,7 @@ import net.abundantmc.abundantskyblock.module.DatabaseModule;
 import net.abundantmc.abundantskyblock.module.PluginModule;
 import net.abundantmc.abundantskyblock.utilities.GamemodeCommand;
 import net.abundantmc.abundantskyblock.warp.WarpGuiCommand;
+import net.abundantmc.abundantskyblock.warp.WarpsCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AbundantSkyblock extends JavaPlugin {
@@ -42,5 +43,6 @@ public final class AbundantSkyblock extends JavaPlugin {
     private void initializeCommands() {
         this.getCommand("gamemode").setExecutor(injector.getInstance(GamemodeCommand.class));
         this.getCommand("warpgui").setExecutor(injector.getInstance(WarpGuiCommand.class));
+        this.getCommand("warps").setExecutor(injector.getInstance(WarpsCommand.class));
     }
 }

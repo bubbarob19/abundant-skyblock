@@ -25,6 +25,7 @@ public class GamemodeCommand implements CommandExecutor {
         // implement here
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
+
             if(arguments[0].equalsIgnoreCase("survival"))
                 player.setGameMode(GameMode.SURVIVAL);
             if(arguments[0].equalsIgnoreCase("creative"))
@@ -35,7 +36,7 @@ public class GamemodeCommand implements CommandExecutor {
                 player.setGameMode(GameMode.SPECTATOR);
 
             messagingService.sendMsg(player,
-                    componentService.getPrefix() + "Your gamemode was successfully changed."
+                    componentService.getPrefix() + "Your gamemode was successfully changed. <gold>"
             );
             messagingService.pling(player, 2);
         }
