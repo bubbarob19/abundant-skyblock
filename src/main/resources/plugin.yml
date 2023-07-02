@@ -1,0 +1,4 @@
+name: Abundant Skyblock
+version: '${project.version}'
+main: net.abundantmc.abundantskyblock.AbundantSkyblock
+api-version: 1.20
