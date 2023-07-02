@@ -105,4 +105,8 @@ public class MessagingService {
     public void ding(Audience audience, float soundLevel) {
         playSound(audience, org.bukkit.Sound.ENTITY_ARROW_HIT_PLAYER, soundLevel);
     }
+
+    public void pop(Audience audience, float soundLevel) {
+        playSound(audience, org.bukkit.Sound.ENTITY_CHICKEN_EGG, soundLevel);
+    }
 }

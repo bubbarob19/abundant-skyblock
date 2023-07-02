@@ -28,7 +28,7 @@ public class WarpService {
 
     private void sendSuccessMessage(WarpEntity warpEntity, Player player) {
         messagingService.sendMsg(player,
-                componentService.getPrefix() + "You were warped to the warp: <orange>" + warpEntity.name()
+                componentService.getPrefix() + "You were warped to the warp: <gold>" + warpEntity.name()
         );
         messagingService.pling(player, 2);
     }
