@@ -47,13 +47,8 @@ public class GamemodeCommand implements CommandExecutor {
                 messagingService.error(player,
                         "Please enter a valid gamemode."
                 );
-
-
             }
-
         }
         return true;
     }
-
-
 }
