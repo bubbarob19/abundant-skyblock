@@ -6,6 +6,8 @@ import net.abundantmc.abundantskyblock.common.mapper.LocationMapper;
 import org.bson.Document;
 import org.bukkit.Material;
 
+import java.util.UUID;
+
 public class WarpMapper implements DocumentMapper<WarpEntity> {
     private final LocationMapper locationMapper;
 
@@ -17,7 +19,7 @@ public class WarpMapper implements DocumentMapper<WarpEntity> {
     @Override
     public Document mapTo(WarpEntity warpEntity) {
         return new Document()
-                .append("_id", warpEntity.id())
+                .append("_id", warpEntity.id().toString())
                 .append("name", warpEntity.name())
                 .append("location", locationMapper.mapTo(warpEntity.location()))
                 .append("permission", warpEntity.permission())
@@ -27,7 +29,7 @@ public class WarpMapper implements DocumentMapper<WarpEntity> {
     @Override
     public WarpEntity mapFrom(Document document) {
         return new WarpEntity(
-                document.getString("_id"),
+                UUID.fromString(document.getString("_id")),
                 document.getString("name"),
                 locationMapper.mapFrom(document.get("location", Document.class)),
                 document.getString("permission"),
