@@ -25,19 +25,32 @@ public class GamemodeCommand implements CommandExecutor {
         // implement here
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
-            if(arguments[0].equalsIgnoreCase("survival"))
-                player.setGameMode(GameMode.SURVIVAL);
-            if(arguments[0].equalsIgnoreCase("creative"))
-                player.setGameMode(GameMode.CREATIVE);
-            if(arguments[0].equalsIgnoreCase("adventure"))
-                player.setGameMode(GameMode.ADVENTURE);
-            if(arguments[0].equalsIgnoreCase("spectator"))
-                player.setGameMode(GameMode.SPECTATOR);
+            GameMode gameMode = null;
+            if(arguments[0].equalsIgnoreCase("survival") || arguments[0].equalsIgnoreCase("s"))
+                gameMode = GameMode.SURVIVAL;
+            if(arguments[0].equalsIgnoreCase("creative") || arguments[0].equalsIgnoreCase("c"))
+                gameMode = GameMode.CREATIVE;
+            if(arguments[0].equalsIgnoreCase("adventure") || arguments[0].equalsIgnoreCase("a"))
+                gameMode = GameMode.ADVENTURE;
+            if(arguments[0].equalsIgnoreCase("spectator") || arguments[0].equalsIgnoreCase("sp"))
+                gameMode = gameMode = GameMode.SPECTATOR;
 
-            messagingService.sendMsg(player,
-                    componentService.getPrefix() + "Your gamemode was successfully changed."
-            );
-            messagingService.pling(player, 2);
+            if(gameMode != null) {
+                player.setGameMode(gameMode);
+                messagingService.sendMsg(player,
+                        componentService.getPrefix() + "Your gamemode was successfully changed to <gold>" + componentService.capitalize(gameMode.toString().toLowerCase()) + "."
+                );
+
+                messagingService.pling(player, 2);
+            }
+            else{
+                messagingService.error(player,
+                        "Please enter a valid gamemode."
+                );
+
+
+            }
+
         }
         return true;
     }
