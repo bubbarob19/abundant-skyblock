@@ -1,4 +1,6 @@
 package net.abundantmc.abundantskyblock.warp;
 
-public class Warp {
-}
+import org.bukkit.Location;
+import org.bukkit.Material;
+
+public record WarpEntity(String id, String name, Location location, String permission, Material icon) {}
