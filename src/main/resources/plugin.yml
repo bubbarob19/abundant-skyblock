@@ -2,3 +2,9 @@ name: Abundant Skyblock
 version: '${project.version}'
 main: net.abundantmc.abundantskyblock.AbundantSkyblock
 api-version: 1.20
+commands:
+  gamemode:
+    description: Gamemode Command
+    usage: /gamemode <gamemode>
+    permission: abundant.command.gamemode
+    permission-message: You do not have permission for this!
