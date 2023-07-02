@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class GamemodeCommand implements CommandExecutor {
-
     private final MessagingService messagingService;
     private final ComponentService componentService;
 

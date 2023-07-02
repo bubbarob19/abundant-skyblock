@@ -1,5 +1,6 @@
 package net.abundantmc.abundantskyblock.audience;
 
+import com.google.inject.Inject;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.sound.Sound;
@@ -20,6 +21,7 @@ public class MessagingService {
 
     private final ComponentService componentService;
 
+    @Inject
     public MessagingService(ComponentService componentService) {
         this.componentService = componentService;
     }
