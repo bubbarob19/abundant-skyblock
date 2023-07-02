@@ -6,6 +6,7 @@ import mc.obliviate.inventory.InventoryAPI;
 import net.abundantmc.abundantskyblock.module.ConfigModule;
 import net.abundantmc.abundantskyblock.module.DatabaseModule;
 import net.abundantmc.abundantskyblock.module.PluginModule;
+import net.abundantmc.abundantskyblock.utilities.GamemodeCommand;
 import net.abundantmc.abundantskyblock.warp.WarpCommand;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,6 +41,6 @@ public final class AbundantSkyblock extends JavaPlugin {
     }
 
     private void initializeCommands() {
-        this.getCommand("gamemode").setExecutor(injector.getInstance(WarpCommand.class));
+        this.getCommand("gamemode").setExecutor(injector.getInstance(GamemodeCommand.class));
     }
 }
