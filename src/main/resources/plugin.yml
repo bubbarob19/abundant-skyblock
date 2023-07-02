@@ -8,3 +8,13 @@ commands:
     usage: /gamemode <gamemode>
     permission: abundant.command.gamemode
     permission-message: You do not have permission for this!
+  warpgui:
+    description: Opens the Warp GUI
+    usage: /warpgui
+    permission: abundant.command.warpgui
+    permission-message: You do not have permission for this!
+  warps:
+    description: Lists all warps
+    usage: /warps
+    permission: abundant.command.warps
+    permission-message: You do not have permission for this!

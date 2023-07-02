@@ -26,9 +26,7 @@ public class DatabaseModule extends AbstractModule {
                         .build())
                 .build();
         MongoClient mongoClient = MongoClients.create(settings);
-        MongoDatabase database = mongoClient.getDatabase(databaseValue);
-        mongoClient.close();
-        return database;
+        return mongoClient.getDatabase(databaseValue);
     }
 
     @Provides @Singleton @Named("warp")
