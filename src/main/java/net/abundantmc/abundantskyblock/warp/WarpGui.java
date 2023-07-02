@@ -1,7 +1,10 @@
 package net.abundantmc.abundantskyblock.warp;
 
 import mc.obliviate.inventory.Icon;
+import net.abundantmc.abundantskyblock.audience.ComponentService;
+import net.abundantmc.abundantskyblock.audience.MessagingService;
 import net.abundantmc.abundantskyblock.common.gui.AbundantGui;
+import net.abundantmc.abundantskyblock.common.gui.AbundantIcon;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
@@ -17,17 +20,26 @@ public class WarpGui extends AbundantGui {
 
     private final WarpRepository warpRepository;
     private final WarpService warpService;
+    private final MessagingService messagingService;
+    private final ComponentService componentService;
     private final Player player;
 
-    public WarpGui(WarpRepository warpRepository, WarpService warpService, Player player) {
-        super(player, ID, TITLE, ROWS);
+    public WarpGui(WarpRepository warpRepository,
+                   WarpService warpService,
+                   MessagingService messagingService,
+                   ComponentService componentService,
+                   Player player) {
+        super(player, ID, TITLE, ROWS, messagingService, componentService);
         this.warpRepository = warpRepository;
         this.warpService = warpService;
+        this.messagingService = messagingService;
+        this.componentService = componentService;
         this.player = player;
     }
 
     @Override
     public void onOpen(InventoryOpenEvent event) {
+        messagingService.pop(player, 1);
         initialPopulation();
 
         List<WarpEntity> warps = warpRepository.findAll()
@@ -42,16 +54,24 @@ public class WarpGui extends AbundantGui {
 
             addItem(
                     slots.get(i),
-                    new Icon(warp.icon())
-                            .setName(warp.name())
-                            .setLore(
-                                    "",
-                                    DOT + " <light_gray>Click here to warp!"
-                            )
+                    AbundantIcon.fromIcon(new Icon(warp.icon())
                             .onClick(inventoryClickEvent -> {
                                 warpService.warpPlayer(warp, player);
                                 getInventory().close();
-                            })
+                            }))
+                            .setName(text("<gold>" +  warp.name()))
+                            .setLore(
+                                    loreList(
+                                            "",
+                                            "Location:",
+                                            "  <dot> <gray>World: <white>" + warp.location().getWorld().getName(),
+                                            "  <dot> <gray>X: <white>" + warp.location().getBlockX(),
+                                            "  <dot> <gray>Y: <white>" + warp.location().getBlockY(),
+                                            "  <dot> <gray>Z: <white>" + warp.location().getBlockZ(),
+                                            "",
+                                            "<dot> <gray>Click here to warp!"
+                                    )
+                            )
             );
         }
     }
