@@ -3,6 +3,7 @@ package net.abundantmc.abundantskyblock.warp;
 import com.google.inject.Inject;
 import net.abundantmc.abundantskyblock.audience.ComponentService;
 import net.abundantmc.abundantskyblock.audience.MessagingService;
+import net.abundantmc.abundantskyblock.warp.entity.WarpEntity;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

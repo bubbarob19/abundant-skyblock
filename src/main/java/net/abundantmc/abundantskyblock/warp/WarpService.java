@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import net.abundantmc.abundantskyblock.audience.ComponentService;
 import net.abundantmc.abundantskyblock.audience.MessagingService;
+import net.abundantmc.abundantskyblock.warp.entity.WarpEntity;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

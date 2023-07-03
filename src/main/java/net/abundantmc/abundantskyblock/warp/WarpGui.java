@@ -5,12 +5,12 @@ import net.abundantmc.abundantskyblock.audience.ComponentService;
 import net.abundantmc.abundantskyblock.audience.MessagingService;
 import net.abundantmc.abundantskyblock.common.gui.AbundantGui;
 import net.abundantmc.abundantskyblock.common.gui.AbundantIcon;
+import net.abundantmc.abundantskyblock.warp.entity.WarpEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
 import java.util.List;
-
-import static net.abundantmc.abundantskyblock.common.constant.TextConstant.DOT;
+import java.util.Optional;
 
 public class WarpGui extends AbundantGui {
     public static final String ID = "warpGui";
@@ -18,10 +18,8 @@ public class WarpGui extends AbundantGui {
 
     private static final Integer ROWS = 5;
 
-    private final WarpRepository warpRepository;
     private final WarpService warpService;
     private final MessagingService messagingService;
-    private final ComponentService componentService;
     private final Player player;
 
     public WarpGui(WarpRepository warpRepository,
@@ -30,10 +28,8 @@ public class WarpGui extends AbundantGui {
                    ComponentService componentService,
                    Player player) {
         super(player, ID, TITLE, ROWS, messagingService, componentService);
-        this.warpRepository = warpRepository;
         this.warpService = warpService;
         this.messagingService = messagingService;
-        this.componentService = componentService;
         this.player = player;
     }
 
@@ -42,7 +38,7 @@ public class WarpGui extends AbundantGui {
         messagingService.pop(player, 1);
         initialPopulation();
 
-        List<WarpEntity> warps = warpRepository.findAll()
+        List<WarpEntity> warps = warpService.findAllWarps()
                 .stream()
                 .filter(warpEntity -> player.hasPermission(warpEntity.permission()))
                 .limit(21)
@@ -51,7 +47,6 @@ public class WarpGui extends AbundantGui {
         List<Integer> slots = getFillerSlots();
         for (int i = 0; i < Math.min(21, warps.size()); i++) {
             WarpEntity warp = warps.get(i);
-
             addItem(
                     slots.get(i),
                     AbundantIcon.fromIcon(new Icon(warp.icon())
