@@ -58,6 +58,9 @@ public class WarpService {
         return warpRepository.findAll();
     }
 
+    public Optional<WarpEntity> findFromName(String name) {
+        return warpRepository.findFromName(name);
+    }
     private void teleportPlayerToWarp(WarpEntity warpEntity, Player player) {
         player.teleport(warpEntity.location());
     }

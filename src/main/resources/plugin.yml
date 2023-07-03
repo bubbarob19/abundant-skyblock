@@ -18,3 +18,8 @@ commands:
     usage: /warps
     permission: abundant.command.warps
     permission-message: You do not have permission for this!
+  warp:
+    description: Teleports player to a warp
+    usage: /warp <warpName>
+    permission: abundant.command.warp
+    permission-message: You do not have permission for this!

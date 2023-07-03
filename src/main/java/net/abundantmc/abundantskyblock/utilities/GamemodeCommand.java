@@ -25,6 +25,10 @@ public class GamemodeCommand implements CommandExecutor {
         // implement here
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
+            if(arguments.length == 0) {
+                messagingService.error(player, "Please enter a gamemode.");
+                return true;
+            }
             GameMode gameMode = null;
             if(arguments[0].equalsIgnoreCase("survival") || arguments[0].equalsIgnoreCase("s"))
                 gameMode = GameMode.SURVIVAL;
