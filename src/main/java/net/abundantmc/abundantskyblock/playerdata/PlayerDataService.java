@@ -1,8 +1,10 @@
 package net.abundantmc.abundantskyblock.playerdata;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import net.abundantmc.abundantskyblock.chat.ChatColor;
 import net.abundantmc.abundantskyblock.playerdata.entity.PlayerDataEntity;
+import net.abundantmc.abundantskyblock.playerdata.exception.PlayerDataNotFoundException;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -14,6 +16,7 @@ public class PlayerDataService {
     private final PlayerDataRepository playerDataRepository;
     private final PlayerDataCache playerDataCache;
 
+    @Inject
     public PlayerDataService(PlayerDataRepository playerDataRepository, PlayerDataCache playerDataCache) {
         this.playerDataRepository = playerDataRepository;
         this.playerDataCache = playerDataCache;
@@ -45,8 +48,11 @@ public class PlayerDataService {
         playerDataRepository.save(playerDataEntity);
     }
 
-    public void handlePlayerJoin(Player player) {
-        UUID uuid = player.getUniqueId();
+    public Optional<Long> whenCached(UUID uuid) {
+        return playerDataCache.whenCached(uuid);
+    }
+
+    public void handlePlayerJoin(UUID uuid) {
         Optional<PlayerDataEntity> playerData = findFromUUID(uuid);
         playerData.ifPresentOrElse(playerDataEntity -> {
             playerDataCache.store(uuid, playerDataEntity);
@@ -55,5 +61,13 @@ public class PlayerDataService {
             playerDataCache.store(uuid, playerDataEntity);
             playerDataRepository.save(playerDataEntity);
         });
+    }
+
+    public void handlePlayerQuit(UUID uuid) {
+        Optional<PlayerDataEntity> playerDataEntityOptional = findFromUUID(uuid);
+        PlayerDataEntity playerData = playerDataEntityOptional.orElseThrow(() -> new PlayerDataNotFoundException(uuid));
+
+        save(playerData);
+        playerDataCache.remove(uuid);
     }
 }

@@ -1,5 +1,6 @@
 package net.abundantmc.abundantskyblock.playerdata;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.mongodb.client.MongoCollection;
 import net.abundantmc.abundantskyblock.common.infrastructure.Mapper;
@@ -12,6 +13,7 @@ public class PlayerDataRepository extends MongoRepository<PlayerDataEntity> {
     private final MongoCollection<Document> collection;
     private final PlayerDataMapper mapper;
 
+    @Inject
     public PlayerDataRepository(MongoCollection<Document> collection, PlayerDataMapper mapper) {
         this.collection = collection;
         this.mapper = mapper;
