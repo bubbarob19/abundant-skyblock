@@ -38,4 +38,9 @@ public class DatabaseModule extends AbstractModule {
     private static MongoCollection<Document> providePlayerDataCollection(MongoDatabase database) {
         return database.getCollection("playerData");
     }
+
+    @Provides @Singleton @Named("profile")
+    private static MongoCollection<Document> provideProfileCollection(MongoDatabase database) {
+        return database.getCollection("profile");
+    }
 }

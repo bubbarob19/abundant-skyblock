@@ -1,10 +1,12 @@
 package net.abundantmc.abundantskyblock.warp;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import net.abundantmc.abundantskyblock.audience.ComponentService;
 import net.abundantmc.abundantskyblock.audience.MessagingService;
 import org.bukkit.entity.Player;
 
+@Singleton
 public class WarpGuiFactory {
     private final WarpRepository warpRepository;
     private final WarpService warpService;

@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import net.abundantmc.abundantskyblock.common.infrastructure.Mapper;
 import net.abundantmc.abundantskyblock.common.infrastructure.MongoRepository;
+import net.abundantmc.abundantskyblock.warp.entity.WarpEntity;
 import org.bson.Document;
 
 import java.util.Optional;
