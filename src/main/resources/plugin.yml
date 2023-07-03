@@ -18,3 +18,8 @@ commands:
     usage: /warps
     permission: abundant.command.warps
     permission-message: You do not have permission for this!
+  deletewarp:
+    description: deletes the listed warp
+    usage: /deletewarp <warpname>
+    permission: abundant.command.deletewarp
+    permission-message: You do not have permission for this!
