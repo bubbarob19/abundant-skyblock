@@ -9,6 +9,9 @@ import net.abundantmc.abundantskyblock.module.PluginModule;
 import net.abundantmc.abundantskyblock.playerdata.PlayerDataSaveRunnable;
 import net.abundantmc.abundantskyblock.playerdata.listener.PlayerDataListener;
 import net.abundantmc.abundantskyblock.utilities.GamemodeCommand;
+import net.abundantmc.abundantskyblock.warp.WarpCommand;
+import net.abundantmc.abundantskyblock.warp.SetWarpCommand;
+import net.abundantmc.abundantskyblock.warp.DeleteWarpCommand;
 import net.abundantmc.abundantskyblock.warp.WarpGuiCommand;
 import net.abundantmc.abundantskyblock.warp.WarpsCommand;
 import org.bukkit.plugin.PluginManager;
@@ -52,6 +55,9 @@ public final class AbundantSkyblock extends JavaPlugin {
         this.getCommand("gamemode").setExecutor(injector.getInstance(GamemodeCommand.class));
         this.getCommand("warpgui").setExecutor(injector.getInstance(WarpGuiCommand.class));
         this.getCommand("warps").setExecutor(injector.getInstance(WarpsCommand.class));
+        this.getCommand("warp").setExecutor(injector.getInstance(WarpCommand.class));
+        this.getCommand("setwarp").setExecutor((injector.getInstance(SetWarpCommand.class)));
+        this.getCommand("deletewarp").setExecutor(injector.getInstance(DeleteWarpCommand.class));
     }
 
     private void initializeListeners() {
