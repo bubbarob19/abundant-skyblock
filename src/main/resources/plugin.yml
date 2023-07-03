@@ -22,4 +22,8 @@ commands:
     description: sets a warp at player's location
     usage: /setwarp <warpname>
     permission: abundant.command.setwarp
+  deletewarp:
+    description: deletes the listed warp
+    usage: /deletewarp <warpname>
+    permission: abundant.command.deletewarp
     permission-message: You do not have permission for this!
