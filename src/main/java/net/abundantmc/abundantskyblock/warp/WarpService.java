@@ -33,6 +33,10 @@ public class WarpService {
         sendSuccessMessage(warpEntity, player);
     }
 
+    public void warpPlayerSilently(WarpEntity warpEntity, Player player) {
+        teleportPlayerToWarp(warpEntity, player);
+    }
+
     public boolean warpExists(String name) {
         return warpRepository.findFromName(name).isPresent();
     }

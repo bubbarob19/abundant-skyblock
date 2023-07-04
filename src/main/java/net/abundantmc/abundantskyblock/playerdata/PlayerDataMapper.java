@@ -13,11 +13,11 @@ public class PlayerDataMapper implements DocumentMapper<PlayerDataEntity> {
     @Override
     public Document mapTo(PlayerDataEntity playerDataEntity) {
         return new Document()
-                .append("_id", playerDataEntity.getId())
+                .append("_id", playerDataEntity.getId().toString())
                 .append("joinNumber", playerDataEntity.getJoinNumber())
                 .append("nickname", playerDataEntity.getNickname())
                 .append("chatColor", playerDataEntity.getChatColor())
-                .append("profileNumber", playerDataEntity.getCurrentProfileNumber());
+                .append("currentProfileNumber", playerDataEntity.getCurrentProfileNumber());
     }
 
     @Override

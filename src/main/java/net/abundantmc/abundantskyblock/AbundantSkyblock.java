@@ -3,17 +3,15 @@ package net.abundantmc.abundantskyblock;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import mc.obliviate.inventory.InventoryAPI;
+import net.abundantmc.abundantskyblock.listener.AsyncPlayerPreLoginListener;
+import net.abundantmc.abundantskyblock.listener.JoinListener;
+import net.abundantmc.abundantskyblock.listener.QuitListener;
 import net.abundantmc.abundantskyblock.module.ConfigModule;
 import net.abundantmc.abundantskyblock.module.DatabaseModule;
 import net.abundantmc.abundantskyblock.module.PluginModule;
 import net.abundantmc.abundantskyblock.playerdata.PlayerDataSaveRunnable;
-import net.abundantmc.abundantskyblock.playerdata.listener.PlayerDataListener;
 import net.abundantmc.abundantskyblock.utilities.GamemodeCommand;
-import net.abundantmc.abundantskyblock.warp.WarpCommand;
-import net.abundantmc.abundantskyblock.warp.SetWarpCommand;
-import net.abundantmc.abundantskyblock.warp.DeleteWarpCommand;
-import net.abundantmc.abundantskyblock.warp.WarpGuiCommand;
-import net.abundantmc.abundantskyblock.warp.WarpsCommand;
+import net.abundantmc.abundantskyblock.warp.*;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -63,7 +61,9 @@ public final class AbundantSkyblock extends JavaPlugin {
     private void initializeListeners() {
         PluginManager manager = this.getServer().getPluginManager();
 
-        manager.registerEvents(injector.getInstance(PlayerDataListener.class), this);
+        manager.registerEvents(injector.getInstance(AsyncPlayerPreLoginListener.class), this);
+        manager.registerEvents(injector.getInstance(JoinListener.class), this);
+        manager.registerEvents(injector.getInstance(QuitListener.class), this);
     }
 
     private void scheduleSavingTask() {

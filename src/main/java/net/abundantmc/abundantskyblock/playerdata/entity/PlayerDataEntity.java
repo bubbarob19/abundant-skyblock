@@ -1,16 +1,20 @@
 package net.abundantmc.abundantskyblock.playerdata.entity;
 
+import com.google.common.base.Objects;
 import net.abundantmc.abundantskyblock.chat.ChatColor;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public final class PlayerDataEntity {
+    // Persistent
     private final UUID id;
     private int joinNumber;
     private String nickname;
     private ChatColor chatColor;
     private int currentProfileNumber;
+
+    // Non-Persistent
+    private boolean firstTime;
 
     public PlayerDataEntity(
             UUID id,
@@ -25,6 +29,8 @@ public final class PlayerDataEntity {
         this.chatColor = chatColor;
         this.currentProfileNumber = currentProfileNumber;
     }
+
+    // Permanent
 
     public UUID getId() {
         return id;
@@ -62,31 +68,13 @@ public final class PlayerDataEntity {
         this.currentProfileNumber = currentProfileNumber;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (PlayerDataEntity) obj;
-        return Objects.equals(this.id, that.id) &&
-                this.joinNumber == that.joinNumber &&
-                Objects.equals(this.nickname, that.nickname) &&
-                Objects.equals(this.chatColor, that.chatColor) &&
-                this.currentProfileNumber == that.currentProfileNumber;
+    // Non-Permanent
+
+    public boolean isFirstTime() {
+        return firstTime;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, joinNumber, nickname, chatColor, currentProfileNumber);
+    public void setFirstTime(boolean firstTime) {
+        this.firstTime = firstTime;
     }
-
-    @Override
-    public String toString() {
-        return "PlayerData[" +
-                "id=" + id + ", " +
-                "joinNumber=" + joinNumber + ", " +
-                "nickname=" + nickname + ", " +
-                "chatColor=" + chatColor + ", " +
-                "currentProfileNumber=" + currentProfileNumber + ']';
-    }
-
 }

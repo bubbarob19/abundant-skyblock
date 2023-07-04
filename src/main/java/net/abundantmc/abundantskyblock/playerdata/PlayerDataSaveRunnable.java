@@ -1,6 +1,7 @@
 package net.abundantmc.abundantskyblock.playerdata;
 
 import com.google.inject.Inject;
+import net.abundantmc.abundantskyblock.common.AbundantLogger;
 import net.abundantmc.abundantskyblock.playerdata.entity.PlayerDataEntity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -13,10 +14,10 @@ public class PlayerDataSaveRunnable extends BukkitRunnable {
     private final PlayerDataService playerDataService;
     private final Plugin plugin;
     private final BukkitScheduler bukkitScheduler;
-    private final Logger logger;
+    private final AbundantLogger logger;
 
     @Inject
-    public PlayerDataSaveRunnable(PlayerDataService playerDataService, Plugin plugin, BukkitScheduler bukkitScheduler, Logger logger) {
+    public PlayerDataSaveRunnable(PlayerDataService playerDataService, Plugin plugin, BukkitScheduler bukkitScheduler, AbundantLogger logger) {
         this.playerDataService = playerDataService;
         this.plugin = plugin;
         this.bukkitScheduler = bukkitScheduler;

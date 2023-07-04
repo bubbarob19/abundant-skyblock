@@ -5,7 +5,6 @@ import com.google.inject.Singleton;
 import net.abundantmc.abundantskyblock.chat.ChatColor;
 import net.abundantmc.abundantskyblock.playerdata.entity.PlayerDataEntity;
 import net.abundantmc.abundantskyblock.playerdata.exception.PlayerDataNotFoundException;
-import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +49,10 @@ public class PlayerDataService {
 
     public Optional<Long> whenCached(UUID uuid) {
         return playerDataCache.whenCached(uuid);
+    }
+
+    public int getTotalPlayerCount() {
+        return playerDataRepository.getDocumentCount();
     }
 
     public void handlePlayerJoin(UUID uuid) {
