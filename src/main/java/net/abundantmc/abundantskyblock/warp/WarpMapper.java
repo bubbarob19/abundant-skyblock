@@ -1,6 +1,7 @@
 package net.abundantmc.abundantskyblock.warp;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import net.abundantmc.abundantskyblock.common.infrastructure.DocumentMapper;
 import net.abundantmc.abundantskyblock.common.mapper.LocationMapper;
 import net.abundantmc.abundantskyblock.warp.entity.WarpEntity;
@@ -9,6 +10,7 @@ import org.bukkit.Material;
 
 import java.util.UUID;
 
+@Singleton
 public class WarpMapper implements DocumentMapper<WarpEntity> {
     private final LocationMapper locationMapper;
 

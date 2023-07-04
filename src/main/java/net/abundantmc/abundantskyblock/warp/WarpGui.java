@@ -6,6 +6,7 @@ import net.abundantmc.abundantskyblock.audience.MessagingService;
 import net.abundantmc.abundantskyblock.common.gui.AbundantGui;
 import net.abundantmc.abundantskyblock.common.gui.AbundantIcon;
 import net.abundantmc.abundantskyblock.warp.entity.WarpEntity;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
